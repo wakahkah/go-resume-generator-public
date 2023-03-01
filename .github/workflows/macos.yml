@@ -1,0 +1,34 @@
+name: macOS build & test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build-and-test:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install wkhtmltopdf
+      run: brew install wkhtmltopdf
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: stable
+
+    - name: Build
+      run: go build -v ./...
+
+    - name: Test
+      run: go test -v -cover ./...
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: TestPDFs
+        path: 'output-test/*.pdf'

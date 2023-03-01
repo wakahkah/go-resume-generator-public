@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Resume</title>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/brands.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/solid.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0//js/fontawesome.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/fontawesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/brands.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/solid.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-size: 12px;
+        }
+
+        h1 {
+            text-align: left;
+            text-transform: uppercase;
+            color: #231955;
+            margin-top: 10px;
+            margin-bottom: 1px;
+            font-size: x-large;
+            line-height: 1em;
+        }
+
+        h4 {
+            color: #1F4690;
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: large;
+            font-weight: bold;
+        }
+
+        h3 {
+            text-align: left;
+            font-size: large;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            text-decoration: underline;
+            color: #231955;
+        }
+
+        a {
+            color: #dd9002;
+            text-decoration: none;
+        }
+
+        * {
+            -webkit-box-sizing: border-box;
+        }
+
+        .grey-bg {
+            background-color: rgb(232, 239, 245);
+            border: 1px solid rgb(248, 251, 255);
+            border-radius: 5px;
+        }
+
+        .blue-border {
+            background-color: #ffefd1;
+            border: 1px solid #ffdfa8;
+            border-radius: 5px;
+        }
+
+        .container {
+            /* wkhtmltopdf uses this one */
+            display: -webkit-box;
+            display: -webkit-flex;
+            /*-webkit-box-pack: justify;*/
+            display: flex;
+        }
+
+        .left-section {
+            -webkit-box-flex: 2;
+            flex: 2;
+            width: 55%;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .right-section {
+            -webkit-box-flex: 1;
+            flex: 1;
+            margin: 10px;
+            width: 25%;
+            padding: 10px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        tr {
+            margin: 8px;
+        }
+
+        th {
+            text-align: left;
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+
+        td {
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+
+        .profile-pic {
+            border: 2px solid lightgray;
+            border-radius: 10px;
+            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+            margin: auto;
+        }
+
+        .center-cropped {
+            width: 100px;
+            height: 100px;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        /* Set the image to fill its parent and make transparent */
+        .center-cropped img {
+            min-height: 100%;
+            min-width: 100%;
+            /* IE 8 */
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+            /* IE 5-7 */
+            filter: alpha(opacity=0);
+            /* modern browsers */
+            opacity: 0;
+        }
+
+        .objective {
+            max-width: 400px;
+            text-align: justify;
+        }
+
+        .icon-wrap {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            text-align: center;
+            font-weight: lighter;
+            color: #dd9002;
+        }
+
+        .icon-link-wrap {
+            width: 30px;
+            text-align: center;
+            font-weight: lighter;
+            color: #466193;
+        }
+
+        .contact>.wrap {
+            /* wkhtmltopdf uses this one */
+            display: -webkit-box !important;
+            /*-webkit-box-pack: justify;*/
+            display: flex;
+            margin: 5px 20px;
+            -webkit-box-pack: end;
+        }
+
+        .contact>.wrap>div {
+            -webkit-box-flex: 1;
+            flex: 1;
+            text-align: right;
+        }
+
+        .contact>.wrap>span {
+            -webkit-box-flex: 3;
+            flex: 3;
+        }
+
+        .skill {
+            padding-left: 20px;
+            padding-right: 24px;
+        }
+
+        .work-exp {
+            padding-left: 20px;
+            padding-right: 24px;
+        }
+
+        .work-exp-section:not(:first-child) {
+            padding-top: 10px;
+        }
+
+        .work-exp-section>.sub-title {
+            color: #1F4690;
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: large;
+            font-weight: bold;
+        }
+
+        .work-exp-section>.sub-title2 {
+            font-size: 14px;
+            margin: 0 0 3px 0;
+            font-weight: lighter;
+        }
+
+        .work-exp-section>.sub-title3 {
+            font-size: 12px;
+            margin: 8px 0 5px 0;
+            font-weight: lighter;
+        }
+
+        .work-exp-section>.container {
+            margin: 0 0 8px 0;
+        }
+
+        .work-exp-section>.container>.date-range {
+            -webkit-box-flex: 1;
+            flex: 1;
+            display: block;
+            text-align: left;
+        }
+
+        .work-exp-section>.container>.location {
+            -webkit-box-flex: 1;
+            flex: 1;
+            display: block;
+            text-align: right;
+        }
+
+        .work-exp-section>.container>span {
+            color: #dd9002;
+        }
+
+        .work-exp-section>ul {
+            margin-top: 3px;
+        }
+
+        .work-exp-section>ul>li {
+            text-align: justify;
+        }
+
+        .right-section>div>section>div {
+            margin-bottom: 8px;
+        }
+
+        .right-section>div>section>div>.sub-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 3px;
+            color: #1F4690;
+        }
+
+        .right-section>div>section>div>.sub-title2 {
+            font-size: 13px;
+            font-weight: lighter;
+            margin-top: 0px;
+            margin-bottom: 2px;
+        }
+
+        .right-section>div>section>div>.sub-title3 {
+            color: #dd9002;
+        }
+
+        .right-section>div>section>div>span {
+            font-weight: lighter;
+        }
+
+        .interest>.sub-title {
+            font-weight: bold;
+            margin: 0 0 8px 0;
+        }
+
+        .interest>.sub-title>.icon-wrap {
+            color: #1F4690;
+        }
+
+        .interest>.sub-title>span {
+            font-size: 14px;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="personal-info container">
+        <div class="left-section grey-bg container">
+            <div style="padding: 20px;">
+                <div class="center-cropped profile-pic" style="background-image: url('{{.PersonalInfo.PhotoUrl}}');">
+                    <img src="{{.PersonalInfo.PhotoUrl}}" alt="Profile Picture">
+                </div>
+            </div>
+            <div style="margin-left: 10px; padding: 10px; padding-right: 20px;">
+                <h1>{{.PersonalInfo.Name}}</h1>
+                <h4>{{.PersonalInfo.Position}}</h4>
+                <p class="objective">{{.PersonalInfo.Objective}}</p>
+            </div>
+        </div>
+        <div class="right-section blue-border contact">
+            <div class="wrap">
+                <span>{{.PersonalInfo.ContactInfo.Phone}}</span>
+                <div style="white-space: nowrap; width: auto;">
+                    <div class="icon-wrap">
+                        <a href="tel:{{.PersonalInfo.ContactInfo.Phone}}">
+                            <i class="fa-sharp fa-solid fa-phone fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap">
+                <span>{{.PersonalInfo.ContactInfo.Email}}</span>
+                <div>
+                    <div class="icon-wrap">
+                        <a href="mailto:{{.PersonalInfo.ContactInfo.Email}}">
+                            <i class="fa-sharp fa-solid fa-envelope fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{if (ne .PersonalInfo.ContactInfo.Address "")}}
+            <div class="wrap">
+                <span>{{.PersonalInfo.ContactInfo.Address}}</span>
+                <div>
+                    <div class="icon-wrap">
+                        <i class="fa-sharp fa-solid fa-location-dot fa-lg"></i>
+                    </div>
+
+                </div>
+            </div>
+            {{end}}
+            {{if (ne .PersonalInfo.ContactInfo.LinkedlnUrl "")}}
+            <div class="wrap">
+                <span>{{.PersonalInfo.ContactInfo.LinkedlnUrl}}</span>
+                <div>
+                    <a href={{.PersonalInfo.ContactInfo.LinkedlnUrl}}>
+                        <div class="icon-wrap">
+                            <i class="fa-brands fa-linkedin fa-lg"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {{end}}
+            {{if (ne .PersonalInfo.ContactInfo.WebsiteUrl "")}}
+            <div class="wrap">
+                <span>{{.PersonalInfo.ContactInfo.WebsiteUrl}}</span>
+                <div>
+                    <div class="icon-wrap">
+                        <a href={{.PersonalInfo.ContactInfo.WebsiteUrl}}>
+                            <i class="fa-solid fa-globe fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{end}}
+            {{if (ne .PersonalInfo.ContactInfo.GithubUrl "")}}
+            <div class="wrap">
+                <span>{{.PersonalInfo.ContactInfo.GithubUrl}}</span>
+                <div>
+                    <div class="icon-wrap">
+                        <a href={{.PersonalInfo.ContactInfo.GithubUrl}}>
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{end}}
+        </div>
+    </section>
+    <div class="container">
+        <div class="left-section">
+            <section class="skill">
+                <h3 style="margin-top: 0px;">
+                    <span>Skill</span>
+                </h3>
+                <table>
+                    <tbody>
+                        {{range .Skills}}
+                        <tr>
+                            <th>{{.GroupName}}</th>
+                            <td>{{.SkillStr}}</td>
+                        </tr>
+                        {{end}}
+                    </tbody>
+                </table>
+            </section>
+            <section class="work-exp" style="padding-top: 20px;">
+                <h3>
+                    <span>Working Experience</span>
+                </h3>
+                {{range .WorkExperience}}
+                <tr>
+                    <div class="work-exp-section">
+                        <p class="sub-title">{{.Position}}</p>
+                        <p class="sub-title2">{{.Company}}&nbsp;
+                            {{if (ne .CompanyUrl "")}}
+                            <a class="icon-link-wrap" href="{{.CompanyUrl}}">
+                                <i class="fa-sharp fa-solid fa-up-right-from-square fa-sm"></i>
+                            </a>
+                            {{end}}
+                        </p>
+                        <div class="container">
+                            <span class="date-range">{{.DateRangeStr}}</span>
+                            <span class="locaiton">{{.Location}}</span>
+                        </div>
+                        <span class="sub-title3">Achievements</span>
+                        <ul>
+                            {{range .AchievedHtml}}
+                            <li>
+                                {{.}}
+                            </li>
+                            {{end}}
+                        </ul>
+                    </div>
+                </tr>
+                {{end}}
+            </section>
+        </div>
+        <div class="right-section grey-bg">
+            <div style="padding: 20px;">
+                <section class="cert">
+                    <h3 style="margin-top: 0px;">
+                        <span>Certificate</span>
+                    </h3>
+                    {{range .Certificates}}
+                    <div>
+                        <p class="sub-title">{{.Name}}&nbsp;
+                            {{if (ne .ReferenceUrl "")}}
+                            <a class="icon-link-wrap" href="{{.ReferenceUrl}}">
+                                <i class="fa-sharp fa-solid fa-up-right-from-square fa-sm"></i>
+                            </a>
+                            {{end}}
+                        </p>
+
+                        <p class="sub-title2">{{.Provider}}</p>
+                        <span class="sub-title3">{{.YearStr}}</span>
+                    </div>
+                    {{end}}
+                </section>
+                <section class="awards">
+                    <h3>
+                        <span>Awards</span>
+                    </h3>
+                    {{range .Awards}}
+                    <div>
+                        <p class="sub-title">{{.Name}}</p>
+                        <p class="sub-title2">{{.Competition}}</p>
+                        <span class="sub-title3">{{.YearStr}}</span>
+                    </div>
+                    {{end}}
+                </section>
+                <section class="education">
+                    <h3>
+                        <span>Education</span>
+                    </h3>
+                    {{range .Education}}
+                    <div>
+                        <p class="sub-title">{{.Major}}</p>
+                        <p class="sub-title2">{{.UniversityName}}</p>
+                        <span class="sub-title3">{{.DateRangeStr}}</span>
+                    </div>
+                    {{end}}
+                </section>
+                <section class="personal-proj">
+                    <h3>
+                        <span>Personal Project</span>
+                    </h3>
+                    {{range .PersonalProject}}
+                    <div>
+                        <p class="sub-title">{{.Name}}&nbsp;
+                            {{if (ne .ReferenceUrl "")}}
+                            <a class="icon-link-wrap" href="{{.ReferenceUrl}}">
+                                <i class="fa-sharp fa-solid fa-up-right-from-square fa-sm"></i>
+                            </a>
+                            {{end}}
+                        </p>
+                        <p class="sub-title2">{{.Description}}</p>
+                        <span class="sub-title3">{{.DateRangeStr}}</span>
+                    </div>
+                    {{end}}
+                </section>
+                <section class="interest">
+                    <h3>
+                        <span>Interest</span>
+                    </h3>
+                    {{range .Interest}}
+                    <div class="sub-title">
+                        <div class="icon-wrap">
+                            <i class="{{.IconUrl}}"></i>
+                        </div>
+                        <span>{{.Name}}</span>
+                    </div>
+                    {{end}}
+                </section>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
