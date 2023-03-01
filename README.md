@@ -9,7 +9,7 @@ source/resume-data.json
 
 ## Output pdf file
 ```
-source/resume-data.json
+output/resume.pdf
 ```
 
 ## HTML template
